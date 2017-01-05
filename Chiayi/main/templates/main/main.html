@@ -1,0 +1,15 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<title>來嘉旅遊</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+</head>
+<body>
+{% include 'main/menu.html' %}
+<h2>回嘉真好</h2>
+<p>{{ like }}</p>
+<p>現在時間：{{ now }}</p>
+</body>
+</html>
