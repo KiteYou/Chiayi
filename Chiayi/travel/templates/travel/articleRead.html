@@ -1,0 +1,24 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<title>來嘉旅遊去</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'travel/css/travel.css' %}">
+</head>
+<body>
+{% include 'main/menu.html' %}
+{% include 'main/messages.html' %}
+<h3 class="inlineBlock">{{ travel.title }}</h3>
+<a class="btn inlineBlock" href="{% url 'travel:articleUpdate' travel.id %}">修改</a>
+<p>發表時間：{{ travel.pubDateTime|date:'Y-m-d H:i' }}</p>
+<div class=articleContent>{{ travel.content|linebreaks }}</div>
+{% for comment in comments %}
+ <p>
+   <span class=comment>{{ comment.content }}</span><br>
+   <span class=commentTime>{{ comment.pubDateTime|date:'Y-m-d H:i'}}</span>
+ </p>
+{% endfor %}
+</body>
+</html>

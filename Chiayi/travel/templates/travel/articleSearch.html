@@ -1,0 +1,28 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<title>來嘉旅遊去</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+</head>
+<body>
+{% include 'main/menu.html' %}
+<h1>來此搜尋</h1>
+{% include 'travel/searchForm.html' %}
+<br><br><hr>
+{% if not articles %}
+  <p>查無資料</p>
+{% else %}
+  <table class="table table-striped table-hover">
+    <tr><th>標題</th><th>發表時間</th></tr>
+    {% for travel in articles %}
+    <tr>
+      <td><a href="{% url 'travel:articleRead' travel.id %}">{{ travel.title }}</a></td>
+      <td>{{ travel.pubDateTime|date:'Y-m-d H:i' }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+</body>
+</html>
