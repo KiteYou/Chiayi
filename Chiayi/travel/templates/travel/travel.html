@@ -5,9 +5,27 @@
 <title>嘉義好去處</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'travel/css/travel.css' %}">
 </head>
 <body>
 {% include 'main/menu.html' %}
 <h2>這裡提供嘉義的景點</h2>
+<br>
+{% for items in itemsList %}
+  {% for item in items %}
+    {% if forloop.first %}
+      <h3>{{ item.title }}</h3>
+      <p>發表時間：{{ item.pubDateTime|date:'Y-m-d H:i' }}</p>
+      <div class=articleContent>{{ item.content|linebreaks|truncatechars_html:30 }}</div>
+      <p>讚：{{ item.likes }}</p>
+    {% else %}
+      <p>
+        <span class=comment>{{ item.content }}</span><br>
+        <span class=commentTime>{{ item.pubDateTime|date:'m 月 d 日 H:i'}}</span>
+      </p>
+    {% endif %}
+  {% endfor %}
+  <hr>
+{% endfor %}
 </body>
 </html>

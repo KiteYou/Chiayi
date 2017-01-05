@@ -1,0 +1,14 @@
+.articleContent {
+ padding: 20px;
+ background-color: white;
+ border-radius: 10px;
+}
+
+.comment {
+ font-size: 0.8em;
+}
+
+.commentTime {
+ font-size: 0.6em;
+ color: gray;
+}
